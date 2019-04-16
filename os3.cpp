@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 int main() 
 {
  int i,j,a[10],b[10],p[10]={1,2,3,4,5,6,7,8,9,10},temp,tat[10],wat[10],n,min,k=1,btime=0,ta=0,sum=0;
@@ -17,6 +18,12 @@ float avgwat=0,avgtat=0,tsum=0,wsum=0;
  for(i=0;i<n;i++)
  {
     scanf("%d",&a[i]); 
+   if(a[i]==0)
+    {
+    	printf("error");
+    	exit(0);
+    	
+	}
  }
  printf("enter burst time\n");
  for(i=0;i<n;i++)
