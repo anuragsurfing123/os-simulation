@@ -9,7 +9,7 @@ float avgwat=0,avgtat=0,tsum=0,wsum=0;
   
   
   
-  
+ start: 
   
  printf("enter the number of Processes:\n");
  scanf("%d",&n); 
@@ -20,8 +20,9 @@ float avgwat=0,avgtat=0,tsum=0,wsum=0;
     scanf("%d",&a[i]); 
    if(a[i]==0)
     {
-    	printf("error");
-    	exit(0);
+    	printf("Arrival time will not be zero(As per Test Cases) enter Arrival time Again\n\n\n");
+    	
+    	goto start;
     	
 	}
  }
