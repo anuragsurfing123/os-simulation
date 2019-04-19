@@ -1,27 +1,30 @@
+//SJF Scheduling Programm
 #include <stdio.h>
 #include <stdlib.h>
 int main() 
 {
- int i,j,a[10],b[10],p[10]={1,2,3,4,5,6,7,8,9,10},temp,tat[10],wat[10],n,min,k=1,btime=0,ta=0,sum=0;
+ int i,j,a[20],b[20],p[20]={1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20},temp,tat[20],wat[20],n,min,k=1,btime=0,ta=0,sum=0;
   
 
 float avgwat=0,avgtat=0,tsum=0,wsum=0;
   
+printf("***************OPERATING SYSTEM PROJECT************************\n");
+
+ start:                                          //for start process again
   
-  
- start: 
-  
+  /*take Input through User*/
  printf("enter the number of Processes:\n");
  scanf("%d",&n); 
  
  printf("enter arrival time\n");
  for(i=0;i<n;i++)
- {
+ {  
     scanf("%d",&a[i]); 
-   if(a[i]==0)
+    
+  if(a[i]==0)                                  //loop works when arrival time is zero
     {
-    	printf("Arrival time will not be zero(As per Test Cases) enter Arrival time Again\n\n\n");
-    	
+    	printf("Arrival time will not be zero(As per Test Cases) enter Arrival time Again\n");
+    	printf("--------------------------------------------------------------------------\n\n\n");
     	goto start;
     	
 	}
@@ -35,7 +38,7 @@ float avgwat=0,avgtat=0,tsum=0,wsum=0;
  
  
  
- /*Sorting According to Arrival Time*/
+ //Sorting According to Arrival Time
  
 for(i=0;i<n;i++)
 {
@@ -82,36 +85,41 @@ b[i]=temp;
 }
 k++;
 }
+//for calculate waiting time
 wat[0]=0;
 for(i=1;i<n;i++)
 {
 sum=sum+b[i-1];
 wat[i]=sum-a[i];
+sum=sum+2;
 wsum=wsum+wat[i];
 }
  
 avgwat=(wsum/n);
+//for calculate Turn Arround Time
 for(i=0;i<n;i++)
 {
 ta=ta+b[i];
 tat[i]=ta-a[i];
+ta=ta+2;
 tsum=tsum+tat[i];
 }
 avgtat=(tsum/n);
  
  
  
+//Output 
  
- 
- 
- printf("************************");
-printf("\n RESULT:-");
+ printf("------------------------\n");
+ printf("RESULT:-\n");
+ printf("************************\n");
+
 printf("\nProcess\t Burst\t Arrival\t Waiting\t Turn-around" );
 for(i=0;i<n;i++)
 {
 printf("\n p%d\t %d\t %d\t\t %d\t\t\t%d",p[i],b[i],a[i],wat[i],tat[i]);
 }
- 
+printf("\n\n---------------------------------------------------------------------\n");
 printf("\n\nAVERAGE WAITING TIME : %f",avgwat);
 printf("\nAVERAGE TURN AROUND TIME : %f",avgtat);
 return 0;
